@@ -1,0 +1,61 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+bool comp(char a, char b){ return (a>b);}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    std::string tmp;
+    char temp;
+    int t,i,j,k;
+    int n;
+    
+    
+    cin>>t;
+    std::string str[t+1];
+    //fgets(str,sizeof(str),stdin);
+    
+    for(i=0;i<t;i++)
+        cin>>str[i];
+    
+    for(i=0;i<t;i++)
+        {
+            
+            n=str[i].length();
+            j=n-2;
+            tmp=str[i];
+            while(j>=0)
+                {   
+                    sort(str[i].begin()+j,str[i].end(),comp);
+                    if(tmp!= str[i]) 
+                    {   
+                        k=n-2;
+                        while(j <= k)
+                            {
+                              if(str[i][k] < str[i][j] && str[i][k] > tmp[j])
+                                  {
+                                    temp = str[i][k];  
+                                    str[i][k] = str[i][j];
+                                    str[i][j] = temp;
+                                    break;
+                              }
+                                k--;
+                        }
+                        sort(str[i].begin()+j+1,str[i].end());
+                        break;
+                    }
+                    j--;
+            }
+            if(tmp==str[i]) cout<<"no answer"<<endl;
+            else cout<<str[i]<<endl;
+    }
+        
+    
+    return 0;
+}
+
