@@ -15,22 +15,20 @@ def find_winner(n):
     while n>1:
         c+=1
         if check_power_two(n):
-            n/=n
+            n/=2
         else:
             n-=find_closest_power(n)
-    print c
-    if c%2:
+    if c%2==0:
         return "Richard"
     else:
         return "Louise"
         
 
-print find_winner(6)
 
-# T =  int(raw_input().strip())
+T =  int(raw_input().strip())
 
-# for i in range(T):
-#     n = int(raw_input().strip())
-#     print find_winner(n)
+for i in range(T):
+    n = int(raw_input().strip())
+    print find_winner(n)
     
-#     
+    
